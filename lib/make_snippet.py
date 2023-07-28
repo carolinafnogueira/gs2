@@ -13,4 +13,4 @@ def make_snippet(string):
     else:
         return new_string
 
-# print(make_snippet("return first five words is next step"))
+# print(make_snippet("return first five words is next step")) DELETE THIS
