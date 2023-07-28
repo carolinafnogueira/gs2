@@ -52,7 +52,7 @@ Given an integer not divisible by 200
 The calculation returns a float and rounds this to an integer
 The function returns the string with converted integer
 """
-reading_time_estimate(450) => ["This text will take 2 minutes to read"]
+reading_time_estimate(678) => ["This text will take 3 minutes to read"]
 
 """
 Given an integer of 0
@@ -66,24 +66,6 @@ It returns a string message
 """
 reading_time_estimate(50) => ["This text will take less than 2 minutes to read"]
 
-"""
-Given a lowercase word and an uppercase word with an exclamation mark
-It returns a list with the uppercase word, no exclamation mark
-"""
-extract_uppercase("hello WORLD!") => ["WORLD"]
-
-"""
-Given an empty string
-It returns an empty list
-"""
-extract_uppercase("") => []
-
-"""
-Given a None value
-It throws an error
-"""
-extract_uppercase(None) throws an error
-```
 
 _Encode each example as a test. You can add to the above list as you go._
 
