@@ -1,8 +1,9 @@
-def personal_diary_system(string):
+def make_snippet(string):
     if (type(string)== int):
         raise Exception("Please enter a string")
     if string == "":
         return ""   
+    
     split_string = string.split()
     first_five_words = split_string[0:5]
     separator = ' '
@@ -12,4 +13,4 @@ def personal_diary_system(string):
     else:
         return new_string
 
-# print(personal_diary_system("return first five words is next step"))
+# print(make_snippet("return first five words is next step"))
