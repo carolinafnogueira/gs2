@@ -12,3 +12,7 @@ def test_not_exact_division():
 def test_text_size_zero():
     result = reading_time_estimate(0)
     assert result == "No text to be read here"
+
+def test_text_size_less_than_200_words():
+    result = reading_time_estimate(50)
+    assert result == "This text will take less than 2 minutes to read"
