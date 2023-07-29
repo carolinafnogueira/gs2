@@ -63,7 +63,7 @@ grammar_helper("HeLLo, WORLD!") => "Hello, world!"
 
 """
 Given an empty string
-It returns the empty string
+It raises an exception
 """
 grammar_helper("") => ""
 
@@ -74,8 +74,8 @@ It throws an error
 grammar_helper() => (None) throws an error
 ```
 
-# Could go into quite a lot of detail here, e.g. if text_string is a question, 
-# needs question mark (this makes it more complex though). Leave this scenario for now.
+<!-- Could go into quite a lot of detail here, e.g. if text_string is a question, 
+needs question mark (this makes it more complex though). Assume simple case with "." as default end punctuation but will accept "!" or "?" if already there. -->
 
 
 _Encode each example as a test. You can add to the above list as you go._
