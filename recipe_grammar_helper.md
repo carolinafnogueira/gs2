@@ -35,47 +35,58 @@ def grammar_helper(text_string):
 _Make a list of examples of what the function will take and return._
 
 ```python
-# EXAMPLE
 
 '''
-Given a lower case text string
-It returns the string with the first word capitalised, and end punctuation
+returns the same text if it's capitalised and with correct punctuation
 '''
-grammar_helper("this is an example to work on") => "This is an example to work on."
+grammar_helper("This is a nice text!") => ["This is a nice text!"]
 
-"""
-Given a string already capitalised and with appropriate end punctuation
-It returns the same string
-"""
-grammar_helper("This string is fine as it is.") => "This string is fine as it is."
+'''
+capitalises the text entered when it starts with lowercase
+'''
+grammar_helper("this needs to be capitalised.") => ["This needs to be capitalised."]
 
-"""
-Given a lower case string with unsuitable end punctuation
-It returns a capitalised string with suitable end punctuation
-"""
-grammar_helper("This string needs suitable end punctuation;") => "This string needs suitable end punctuation." 
+'''
+adds full stop if there isn't any punctuation
+'''
+grammar_helper("It needs final punctuation") => ["It needs final punctuation."]
 
-"""
-Given a mixed case string with suitable end punctuation
-It returns a capitalised string with suitable end punctuation
-"""
-grammar_helper("HeLLo, WORLD!") => "Hello, world!"
+'''
+changes puctuation to full stop if puctuation given isn't appropriate
+inappropriate punctuations => ":", ",", ";",
+appropiate punctuations => "!", "?", "."
+'''
+grammar_helper("This is the final sentence,") => ["This is the final sentence."]
 
-"""
-Given an empty string
-It raises an exception
-"""
-grammar_helper("") => ""
+'''
+doesn't change the 1st letter if the text is uppercase
+'''
+grammar_helper("THIS IS OK!") => ["THIS IS OK!"]
 
-"""
-Given a None value
-It throws an error
-"""
-grammar_helper() => (None) throws an error
-```
+'''
+given a text started with whitespace
+delete whitespaces and capitalises the text
+'''
+grammar_helper("    text starts with whitespaces.") => ["Text starts with whitespaces."]
 
-<!-- Could go into quite a lot of detail here, e.g. if text_string is a question, 
-needs question mark (this makes it more complex though). Assume simple case with "." as default end punctuation but will accept "!" or "?" if already there. -->
+
+'''
+text ends with whitespaces
+delete whitespaces before checking puctuation
+'''
+grammar_helper("text ends with whitespaces   ") => ["Text ends with whitespaces."]
+
+'''
+Mixed lower and uppercase
+Returns capitalised text
+'''
+grammar_helper("tExT to CHEck!") => ["Text to check!"]
+
+'''
+returns a message if it's an empty string
+(raises Exception)
+'''
+grammar_helper("") => ["No text to check."]
 
 
 _Encode each example as a test. You can add to the above list as you go._

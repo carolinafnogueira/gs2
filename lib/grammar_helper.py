@@ -1,15 +1,22 @@
-# Less complex scenario in exercise demonstration solution. 
-# Solution also returns just T/F depending on whether correctly punctuated.
+def grammar_helper(text):
+    valid_punctuation = ["!", "?", "."]
+    invalid_punctuation = [",", ";", ":"]
 
-def grammar_helper(text_string):
-    transformed_string = text_string.strip().capitalize()
-    # Added .strip() to trim any leading/trailing whitespaces
+    # Check for empty string:
+    if text == "":
+        raise Exception("No text to check.")
+    text = text.strip()     # Remove all whitespaces before checking anything else
 
-    if text_string == "":
-        raise Exception("Cannot punctuate an empty string")
-    elif transformed_string[-1] in ".!?":
-        return transformed_string
-    elif transformed_string[-1] in ":;,":
-        return transformed_string[:-1] + "."
-    else: 
-        return transformed_string + "."
+    # Check if the text is all uppercase or not
+    # Adjust capitalisation
+    if text != text.upper():
+        text = text.capitalize()
+    
+    # Check puntuation:
+    if text[-1] in valid_punctuation:
+        return text
+    elif text[-1] in invalid_punctuation:
+        return text[:-1] + "."
+    else:
+        return text + "."
+    

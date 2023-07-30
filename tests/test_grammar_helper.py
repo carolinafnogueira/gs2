@@ -1,44 +1,40 @@
 import pytest 
 from lib.grammar_helper import *
 
-'''
-Given a lower case text string
-It returns the string with the first word capitalised, and end punctuation
-'''
-def test_capitalises_lower_case_string():
-    result = grammar_helper("this is an example to work on") 
-    assert result == "This is an example to work on."
+def test_correct_text():
+    result = grammar_helper("This is a nice text!")
+    assert result == "This is a nice text!"
 
-'''
-Given a string already capitalised and with appropriate end punctuation
-It returns the same string
-'''
-def test_returns_appropriate_string_as_is():
-    result = grammar_helper("This string is fine as it is.") 
-    assert result == "This string is fine as it is."
+def test_needs_capitalisation():
+    result = grammar_helper("this needs to be capitalised.")
+    assert result == "This needs to be capitalised."
 
-'''
-Given a lower case string with unsuitable end punctuation
-It returns a capitalised string with suitable end punctuation
-'''
-def test_lower_case_string_with_unsuitable_end_punctuation():
-    result = grammar_helper("This string needs suitable end punctuation;")
-    assert result == "This string needs suitable end punctuation." 
+def test_needs_final_punctuation():
+    result = grammar_helper("it nEEds fiNal punctuation")
+    assert result == "It needs final punctuation."
 
-'''
-Given a mixed case string with suitable end punctuation
-It returns a capitalised string with suitable end punctuation
-'''
-def test_mixed_case_string_with_suitable_end_punctuation():
-    result = grammar_helper("HeLLo, WORLD!") 
-    assert result == "Hello, world!"
+def test_suitable_final_puctuation():
+    result = grammar_helper("This is the final sentence,")
+    assert result == "This is the final sentence."
 
-'''
-Given an empty string
-It raises an exception
-'''
-def test_empty_string(): 
+def test_uppercase_sentence():
+    result = grammar_helper("THIS IS OK!")
+    assert result == "THIS IS OK!"
+
+def test_text_starts_with_whitespaces():
+    result = grammar_helper("    text starts with whitespaces.")
+    assert result == "Text starts with whitespaces."
+
+def test_text_ends_with_whitespaces():
+    result = grammar_helper("text ends with whitespaces   ")
+    assert result == "Text ends with whitespaces."
+
+def test_mixed_case_return_capitalised():
+    result = grammar_helper("tExT to CHEck!")
+    assert result == "Text to check!"
+
+def test_empty_string():
     with pytest.raises(Exception) as e:
-        result = grammar_helper("")
+        grammar_helper("")
     error_message = str(e.value)
-    assert error_message == "Cannot punctuate an empty string"
+    assert error_message == "No text to check."
