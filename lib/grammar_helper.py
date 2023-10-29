@@ -1,7 +1,4 @@
 def grammar_helper(text):
-    valid_punctuation = ["!", "?", "."]
-    invalid_punctuation = [",", ";", ":"]
-
     # Check for empty string:
     if text == "":
         raise Exception("No text to check.")
@@ -11,12 +8,12 @@ def grammar_helper(text):
     # Adjust capitalisation
     if text != text.upper():
         text = text.capitalize()
+    # Check punctuation:
+        if text[-1] in "!?.":
+            return text
+        elif text[-1] in ",:;":
+            return text[:-1] + "."
+        else:
+            return text + "."
     
-    # Check puntuation:
-    if text[-1] in valid_punctuation:
-        return text
-    elif text[-1] in invalid_punctuation:
-        return text[:-1] + "."
-    else:
-        return text + "."
     
